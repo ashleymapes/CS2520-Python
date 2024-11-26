@@ -10,7 +10,7 @@ taking a test, the score is None or 0 (or whatever you designate.)
 with the new test score.
 '''
 
-import randomg
+import random
 
 # define a class Question that takes in question, choices, and correct answer
 class Question:
