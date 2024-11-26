@@ -10,29 +10,35 @@ taking a test, the score is None or 0 (or whatever you designate.)
 with the new test score.
 '''
 
-import random
+import randomg
 
 # define a class Question that takes in question, choices, and correct answer
 class Question:
+    # create constructor
     def __init__(self, question_text, choices, correct_answer):
         self.question_text = question_text
         self.choices = choices
         self.correct_answer = correct_answer
 
+    # display question in proper format
     def display_question(self):
         print(self.question_text)
         for i, choice in enumerate(self.choices, start=1):
             print(f"{i}. {choice}")
     
+    # get correct answer
     def get_answer(self):
         return self.correct_answer
 
+    # get array of choices
     def get_choices(self):
         return self.choices
 
+    # get the question
     def get_question(self):
         return self.question_text
     
+    # check if answer is correct
     def check_answer(self, answer):
         return answer == self.correct_answer
 
@@ -40,6 +46,7 @@ class Question:
 
 # define the Test class
 class Test:
+    # create question bank
     question_bank = [
     Question("Where is Cal Poly Pomona located?", 
              ["Texas", "California", "Nevada", "Washington"], 
@@ -73,63 +80,80 @@ class Test:
              "dog"),
     ]
     
-    
+    # make constructor
     def __init__(self):
         self.questions = random.sample(self.question_bank, 5)
 
+    # answer questions to a given student
     def administer(self, student):
+        
         print(f"\nStarting test for {student.name} (ID: {student.student_id})")
+        
+        # create array to hold wrong answers to print later
         wrong_answers = []
         score = 0
+        
+        # iterate through questions
         for i, question in enumerate(self.questions, start=1):
             print(f"\nProblem {i}:")
             question.display_question()
+            
+            # input validation
             while True:
                 answer = input("Your answer: ")
                 if answer not in question.get_choices():
                     print("Invalid choice. Please choose a valid option.")
                 else:
                     break
+            # increase score if correct
             if question.check_answer(answer):
                 score += 1
+            # add wrong answer to array
             else:
                 wrong_answers.append((i, question, answer))
                 
         print(f"\nTest completed! Score: {score}/{len(self.questions)}")
+        # update student score
         student.update_score(score)
         
+        # if there are wrong answers, print them
         if wrong_answers:
             print("\nIncorrect answers:\n")
             for i, question, answer in wrong_answers:
                 print(f"Problem {i}: {question.get_question()}\nYour answer: {answer}\nCorrect answer: {question.get_answer()}\n")
+                
         print("END OF TEST")
                 
 
 # define the Student class which takes in a name and id and sets test score to None initially
 class Student:
+    # create constructor
     def __init__(self, name, student_id):
         self.name = name
         self.student_id = student_id
         self.test_score = None
 
+    # update student test score
     def update_score(self, score):
         self.test_score = score
     
+    # print student info
     def __str__(self):
         return f"{self.name} (ID: {self.student_id}) - Test Score: {self.test_score}"
 
-
-
-# Example usage
-if __name__ == "__main__":
+def main():
+    # create a student and print info
     name = "Pickle Rick"
     studentID = 666666
     student_rick = Student(name, studentID)
     print(f"Example of student: {student_rick}")
+    
+    # test .update_score method
     print(f"Testing update score...")
     student_rick.update_score(10)
     print(f"New information: {student_rick}\n")
     
+    # get student info from user and create student
     student_name = input("Enter the student's name: ")
     student_id = input("Enter the student's ID: ")
     student = Student(student_name, student_id)
@@ -137,6 +161,7 @@ if __name__ == "__main__":
     print()    
     print(f"Student info: {student}")
 
+    # administer test
     test = Test()
     test.administer(student)
 
@@ -145,6 +170,10 @@ if __name__ == "__main__":
     
     print()
     print(f"Updated student info: {student}")
+
+# Example usage
+if __name__ == "__main__":
+    main()
 
 '''
 TEST 1:
