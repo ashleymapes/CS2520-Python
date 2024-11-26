@@ -171,7 +171,7 @@ def main():
     print()
     print(f"Updated student info: {student}")
 
-# Example usage
+# run main
 if __name__ == "__main__":
     main()
 
