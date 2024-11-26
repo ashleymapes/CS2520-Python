@@ -103,7 +103,6 @@ class Test:
             for i, question, answer in wrong_answers:
                 print(f"Problem {i}: {question.get_question()}\nYour answer: {answer}\nCorrect answer: {question.get_answer()}\n")
         print("END OF TEST")
-        print()
                 
 
 # define the Student class which takes in a name and id and sets test score to None initially
@@ -127,6 +126,9 @@ if __name__ == "__main__":
     studentID = 666666
     student_rick = Student(name, studentID)
     print(f"Example of student: {student_rick}")
+    print(f"Testing update score...")
+    student_rick.update_score(10)
+    print(f"New information: {student_rick}\n")
     
     student_name = input("Enter the student's name: ")
     student_id = input("Enter the student's ID: ")
@@ -143,3 +145,151 @@ if __name__ == "__main__":
     
     print()
     print(f"Updated student info: {student}")
+
+'''
+TEST 1:
+
+Example of student: Pickle Rick (ID: 666666) - Test Score: None
+Testing update score...
+New information: Pickle Rick (ID: 666666) - Test Score: 10
+
+Enter the student's name: Finny
+Enter the student's ID: 1234
+
+Student info: Finny (ID: 1234) - Test Score: None
+
+Starting test for Finny (ID: 1234)
+
+Problem 1:
+What is the mascot of Cal Poly Pomona?
+1. Bronco
+2. Tiger
+3. Eagle
+4. Bear
+Your answer: Bronco
+
+Problem 2:
+Where is Cal Poly Pomona located?
+1. Texas
+2. California
+3. Nevada
+4. Washington
+Your answer: California
+
+Problem 3:
+What is the name of Ashley's dog?
+1. Finny
+2. Pixie
+3. Diego
+4. Cali
+Your answer: Finny
+
+Problem 4:
+What's Ashley's favorite number?
+1. 9
+2. 7
+3. 21
+4. 13
+Your answer: 7
+
+Problem 5:
+Who is Ashley's best friend?
+1. Sayumi
+2. Joelle
+3. Yichen
+4. Courtney
+Your answer: testing input validation
+Invalid choice. Please choose a valid option.
+Your answer: Joelle
+
+Test completed! Score: 4/5
+
+Incorrect answers:
+
+Problem 4: What's Ashley's favorite number?
+Your answer: 7
+Correct answer: 13
+
+END OF TEST
+
+
+Final Score for Finny (ID: 1234): 4
+
+Updated student info: Finny (ID: 1234) - Test Score: 4
+
+TEST 2:
+
+Example of student: Pickle Rick (ID: 666666) - Test Score: None
+Testing update score...
+New information: Pickle Rick (ID: 666666) - Test Score: 10
+
+Enter the student's name: Mickey Mouse
+Enter the student's ID: 101010
+
+Student info: Mickey Mouse (ID: 101010) - Test Score: None
+
+Starting test for Mickey Mouse (ID: 101010)
+
+Problem 1:
+What's Ashley's favorite number?
+1. 9
+2. 7
+3. 21
+4. 13
+Your answer: 13
+
+Problem 2:
+What is Ashley's favorite color?
+1. blue
+2. red
+3. black
+4. pink
+Your answer: black
+
+Problem 3:
+What is the best type of animal?
+1. cat
+2. dog
+3. horse
+4. snake
+Your answer: horse
+
+Problem 4:
+Where is Cal Poly Pomona located?
+1. Texas
+2. California
+3. Nevada
+4. Washington
+Your answer: California
+
+Problem 5:
+Who is Ashley's best friend?
+1. Sayumi
+2. Joelle
+3. Yichen
+4. Courtney
+Your answer: Courtney
+
+Test completed! Score: 2/5
+
+Incorrect answers:
+
+Problem 2: What is Ashley's favorite color?
+Your answer: black
+Correct answer: blue
+
+Problem 3: What is the best type of animal?
+Your answer: horse
+Correct answer: dog
+
+Problem 5: Who is Ashley's best friend?
+Your answer: Courtney
+Correct answer: Joelle
+
+END OF TEST
+
+
+Final Score for Mickey Mouse (ID: 101010): 2
+
+Updated student info: Mickey Mouse (ID: 101010) - Test Score: 2
+'''
